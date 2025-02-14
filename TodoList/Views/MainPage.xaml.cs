@@ -10,24 +10,27 @@ public partial class MainPage : ContentPage
         BindingContext = viewModel;
     }
     // Evento para concluir a tarefa
-    public void OnTaskConcluded(object sender, EventArgs e)
+    private void OnArchiveTaskInvoked(object sender, EventArgs e)
     {
-        var task = ((SwipeItem)sender).BindingContext as TaskItem;
-        if (task != null)
+        if (sender is SwipeItem swipeItem)
         {
-            var viewModel = (MainViewModel)BindingContext;
-            viewModel.CompletedTasks(task);
+            if (swipeItem.BindingContext is TaskItem task)
+            {
+                var viewModel = (MainViewModel)BindingContext;
+                viewModel.ArchiveTask(task);
+            }
         }
     }
 
-    // Evento para arquivar a tarefa
-    public void OnTaskArchived(object sender, EventArgs e)
+    private void OnCompleteTaskInvoked(object sender, EventArgs e)
     {
-        var task = ((SwipeItem)sender).BindingContext as TaskItem;
-        if (task != null)
+        if (sender is SwipeItem swipeItem)
         {
-            var viewModel = (MainViewModel)BindingContext;
-            viewModel.ArchiveTask(task);
+            if (swipeItem.BindingContext is TaskItem task)
+            {
+                var viewModel = (MainViewModel)BindingContext;
+                viewModel.CompleteTask(task);
+            }
         }
     }
 }

@@ -49,23 +49,24 @@ namespace TodoList.ViewModels
             }
         }
 
-        private async void ArchiveTask(TaskItem task)
+        public void ArchiveTask(TaskItem task)
         {
             if (task != null)
             {
                 NewTasks.Remove(task);
                 ArchivedTasks.Add(task);
-                await Task.Delay(300);
+                OnPropertyChanged(nameof(ArchivedTasks));
             }
         }
 
-        private async void CompleteTask(TaskItem task)
+
+        public void CompleteTask(TaskItem task)
         {
             if (task != null)
             {
                 NewTasks.Remove(task);
                 CompletedTasks.Add(task);
-                await Task.Delay(300);
+                OnPropertyChanged(nameof(CompletedTasks));
             }
         }
 

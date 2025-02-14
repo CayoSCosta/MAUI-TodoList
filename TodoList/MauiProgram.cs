@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using TodoList.Services;
 using TodoList.ViewModels;
+using TodoList.Views;
 
 namespace TodoList
 {
@@ -23,6 +24,9 @@ namespace TodoList
             builder.Services.AddSingleton<CepService>();
             builder.Services.AddTransient<CepViewModel>();
             builder.Services.AddTransient<MainViewModel>();
+            builder.Services.AddTransient<Arquivadas>();
+            builder.Services.AddTransient<Concluidas>();
+
 
             return builder.Build();
         }

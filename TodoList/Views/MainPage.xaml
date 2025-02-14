@@ -15,7 +15,7 @@
         <Button Text="Adicionar"
                 Command="{Binding AddTaskCommand}" />
 
-        <ListView ItemsSource="{Binding NewTasks}">
+        <ListView x:Name="TaskListView" ItemsSource="{Binding NewTasks}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -24,16 +24,14 @@
                                 <SwipeItems>
                                     <SwipeItem Text="Concluir"
                                                BackgroundColor="Green"
-                                               Command="{Binding Source={x:Reference MainPage}, Path=BindingContext.CompleteTaskCommand}"
-                                               CommandParameter="{Binding}" />
+                                               Invoked="OnCompleteTaskInvoked" />
                                 </SwipeItems>
                             </SwipeView.RightItems>
                             <SwipeView.LeftItems>
                                 <SwipeItems>
                                     <SwipeItem Text="Arquivar"
                                                BackgroundColor="Blue"
-                                               Command="{Binding Source={x:Reference MainPage}, Path=BindingContext.ArchiveTaskCommand}"
-                                               CommandParameter="{Binding}" />
+                                               Invoked="OnArchiveTaskInvoked" />
                                 </SwipeItems>
                             </SwipeView.LeftItems>
 
